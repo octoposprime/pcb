@@ -2,7 +2,6 @@ name: Label issues
 on:
   issues:
     types:
-      - reopened
       - opened
 jobs:
   label_issues:
@@ -10,7 +9,7 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS" --add-assignee @me
+      - run: gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS" --add-assignee @Em
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           LABELS: ${{ secrets.REPO_TEAM }}
