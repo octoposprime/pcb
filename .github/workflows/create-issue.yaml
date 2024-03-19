@@ -9,10 +9,11 @@ jobs:
     permissions:
       issues: write
     steps:
-      - run: gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS" --add-assignee @Em
+      - run: gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS" --add-assignee "$ASSIGNEE"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           LABELS: ${{ secrets.REPO_TEAM }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           PROJECT: OctopOSPrime
+          ASSIGNEE: ${{ github.actor }}
