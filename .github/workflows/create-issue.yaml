@@ -10,7 +10,6 @@ jobs:
       issues: write
     steps:
       - run: |
-          echo ${{ github.event.issue.body }}
           gh issue edit "$NUMBER" --add-project "$PROJECT" --add-label "$LABELS" --add-assignee "$ASSIGNEE"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -18,5 +17,4 @@ jobs:
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           PROJECT: OctopOSPrime
-          ACTOR: ${{ github.actor }}
           ASSIGNEE: ${{ github.actor }}
